@@ -31,3 +31,11 @@ $dualArrayCount = $alphaSort->getLastProcessCount();
 echo ("Finished Sorting String via Dual Arrays!\n");
 echo ("Number of Comparisons: {$dualArrayCount}\n");
 echo ("Sorted String: {$sortedString}\n\n");
+
+// Sort string by Swap Method
+$sortedString  = $alphaSort->alphaSwapSort();
+$swapSortCount = $alphaSort->getLastProcessCount();
+
+echo ("Finished Sorting String via Swap Sort!\n");
+echo ("Number of Comparisons: {$swapSortCount}\n");
+echo ("Sorted String: {$sortedString}\n\n");

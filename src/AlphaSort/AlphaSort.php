@@ -1,8 +1,7 @@
 <?php namespace AlphaSort;
 
 /**
- * AlphaSort -
- *
+ * AlphaSort - Sort a given string's characters into an alphabetical list
  */
 class AlphaSort
 {
@@ -36,6 +35,13 @@ class AlphaSort
     }
 
     /**
+     * Reset the process count.
+     */
+    private function resetProcessCount() {
+        $this->processCount = 0;
+    }
+
+    /**
      * Sort the passed string in alphabetical order by using a second array
      *
      * NOTES:
@@ -63,10 +69,10 @@ class AlphaSort
      * @return string $sortedString
      */
     public function alphaSortDualArrays() {
-        $this->processCount = 0; // Reset process count before running.
+        $this->resetProcessCount(); // Reset process count before running.
 
-        $sortedString    = [$this->baseString[0]];
-        $stringLen       = strlen($this->baseString);
+        $sortedString = [$this->baseString[0]];
+        $stringLen    = strlen($this->baseString);
 
         for ($i = 1; $i < $stringLen; $i++) {
             $currentChar = $this->baseString[$i];
@@ -105,14 +111,14 @@ class AlphaSort
      * typewriter 1 - t / y in correct position
      * ptyewriter 2 - p shifts 2 spots
      * eptywriter 3 - e shifts 3 spots
-     * eptwyriter 1 - w shifts 1 spot
-     * eprtwyiter 3 - r shifts 3 spots
-     * eiprtwyter 5 - i shifts 5 spots
-     * eiprttwyer 2 - t shifts 2 spots
-     * eeiprttwyr 7 - e shifts 7 spots
+     * eptwyriter 2 - w shifts 2 spot
+     * eprtwyiter 4 - r shifts 4 spots
+     * eiprtwyter 6 - i shifts 6 spots
+     * eiprttwyer 3 - t shifts 3 spots
+     * eeiprttwyr 8 - e shifts 8 spots
      * eeiprrttwy 5 - r shifts 5 spots
      *
-     * Total Comparisons: 29
+     * Total Comparisons: 34
      * --------------------------------------------------------------------
      *
      * @param string $string
@@ -120,7 +126,47 @@ class AlphaSort
      * @return string $sortedString
      */
     public function alphaSwapSort() {
+        $this->resetProcessCount(); // Reset process count before running.
 
+        $string    = $this->baseString;
+        $stringLen = strlen($string);
+
+        // Start at 1 since we know we need to compare the first two.
+        for ($i = 1; $i < $stringLen; $i++) {
+            $string = $this->swapSort($string, $i);
+        }
+
+        return $string;
+    }
+
+    /**
+     * Recursively keep checking index to see if it needs to move forward farther.
+     *
+     * @param string $string
+     * @param int    $cursor
+     *
+     * @return string $string
+     */
+    private function swapSort($string, $cursor) {
+        $this->processCount++;
+
+        if ($cursor > 0) {
+            $prevCharIndex = $cursor - 1;
+
+            if ($string[$cursor] < $string[$prevCharIndex]) {
+                // Swap characters
+                $movingChar             = $string[$cursor];
+                $string[$cursor]        = $string[$prevCharIndex];
+                $string[$prevCharIndex] = $movingChar;
+
+                // Check if we need to keep checking for swaps.
+                if ($cursor > 1) {
+                    $string = $this->swapSort($string, $prevCharIndex);
+                }
+            }
+        }
+
+        return $string;
     }
 
 }
