@@ -17,4 +17,15 @@ class AlphaSortTest extends PHPUnit_Framework_TestCase
         $alphaSort->alphaSortDualArrays();
         $this->assertEquals(23, $alphaSort->getLastProcessCount());
     }
+
+    public function testSwapSort() {
+        $alphaSort = new AlphaSort("typewriter");
+        $this->assertEquals("eeiprrttwy", $alphaSort->alphaSwapSort());
+    }
+
+    public function testSwapSortProcessCount() {
+        $alphaSort = new AlphaSort("typewriter");
+        $alphaSort->alphaSwapSort();
+        $this->assertEquals(34, $alphaSort->getLastProcessCount());
+    }
 }
