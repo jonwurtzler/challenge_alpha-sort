@@ -1,3 +1,6 @@
+## Challenge
+Write a function that sorts the letters of the word `typewriter` alphabetically.
+
 ## Installation
 
 Install the vendor dependencies with Composer:
