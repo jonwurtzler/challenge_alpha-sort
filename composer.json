@@ -1,0 +1,24 @@
+{
+  "name": "jonwurtzler/challenge_alpha-sort",
+  "description": "Write a function that sorts the letters of the word typewriter alphabetically.",
+  "authors": [
+    {
+      "name": "Jon Wurtzler",
+      "email": "jwurtzle@nerdery.com"
+    }
+  ],
+  "license": "MIT",
+  "require-dev": {
+    "phpunit/phpunit" : "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "AlphaSort\\": "src/AlphaSort/"
+    }
+  },
+  "autoload-dev": {
+    "classmap": [
+      "tests/AlphaSortTest.php"
+    ]
+  }
+}
