@@ -101,7 +101,7 @@ class AlphaSort
     }
 
     /**
-     * Sort the passed string in alphabetical order by using a second array
+     * Sort the passed string in alphabetical order by bubbling (side by side compare)
      *
      * NOTES:
      * --------------------------------------------------------------------
